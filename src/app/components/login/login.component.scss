@@ -1,0 +1,35 @@
+section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container__login {
+        width: 25%;
+        padding: 2rem;
+        box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.15);
+
+        .login__title {
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .login__field {
+            display: flex;
+            flex-direction: column;
+
+            input {
+                padding: .2rem .5rem;
+            }
+        }
+
+        .login__userField {
+            margin-bottom: 1rem;
+        }
+
+        .login__checkbox {
+            margin-top: .4rem;
+        }
+    }
+}
