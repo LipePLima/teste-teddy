@@ -9,23 +9,23 @@ import { User } from '../../types/user'
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  public user: User = {
+  public emptyFields = false
+  public user: User  = {
     user: '',
     password: ''
   };
 
-  public emptyFields = false
-
   constructor(private router: Router) { }
 
-  login(user: string, password: string) {
+  public login(user: string, password: string): void {
     if (user && password) {
-      this.router.navigate(['/nova-rota']);
+      this.router.navigate(['/mainPage']);
       this.emptyFields = false;
-      
+
     } else {
       this.emptyFields = true;
       
     }
   }
+
 }

@@ -1,0 +1,124 @@
+<main>
+  <!-- DEVE IR PARA COMPONENTS COMO "HEADER" -->
+  <div class="menu">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4">
+                  <span class="titulo">Aplicação Web</span>
+              </div>
+              <div class="col-md-8">
+                  <div class="d-flex justify-content-end">
+                      <a href="#" class="menu-item">Cadastrar parceiro</a>
+                      <a href="#" class="menu-item">Listar todos os parceiros</a>
+                      <a href="#" class="menu-item">Sobre a aplicação</a>
+                      <a href="#" class="menu-item">Sair</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Conteúdo da aplicação -->
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6">
+              <!-- Formulário para cadastrar empresa externa -->
+              <h3>Cadastrar empresa externa</h3>
+              <form>
+                  <div class="form-group">
+                      <label for="nome">Nome</label>
+                      <input type="text" class="form-control" id="nome" placeholder="Digite o nome da empresa">
+                  </div>
+                  <div class="form-group">
+                      <label for="cnpj">CNPJ</label>
+                      <input type="text" class="form-control" id="cnpj" placeholder="Digite o CNPJ da empresa">
+                  </div>
+                  <div class="form-group">
+                      <label for="email">E-mail</label>
+                      <input type="email" class="form-control" id="email" placeholder="Digite o e-mail da empresa">
+                  </div>
+                  <div class="form-group">
+                      <label for="telefone">Telefone</label>
+                      <input type="tel" class="form-control" id="telefone" placeholder="Digite o telefone da empresa">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Cadastrar</button>
+              </form>
+          </div>
+          <div class="col-md-6">
+              <!-- Tabela para listar as empresas externas -->
+              <h3>Listar as empresas externas</h3>
+              <table class="table tabela">
+                  <thead>
+                      <tr>
+                          <th scope="col">Nome</th>
+                          <th scope="col">CNPJ</th>
+                          <th scope="col">E-mail</th>
+                          <th scope="col">Telefone</th>
+                          <th scope="col">Ações</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>Empresa A</td>
+                          <td>00.000.000/0000-00</td>
+                          <td>empresa_a@email.com</td>
+                          <td>(21) 99999-9999</td>
+                          <td>
+                              <div class="acoes">
+                                  <a href="#" class="btn btn-warning">Editar</a>
+                                  <a href="#" class="btn btn-danger">Deletar</a>
+                              </div>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>Empresa B</td>
+                          <td>11.111.111/1111-11</td>
+                          <td>empresa_b@email.com</td>
+                          <td>(21) 88888-8888</td>
+                          <td>
+                              <div class="acoes">
+                                  <a href="#" class="btn btn-warning">Editar</a>
+                                  <a href="#" class="btn btn-danger">Deletar</a>
+                              </div>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>Empresa C</td>
+                          <td>22.222.222/2222-22</td>
+                          <td>empresa_c@email.com</td>
+                          <td>(21) 77777-7777</td>
+                          <td>
+                              <div class="acoes">
+                                  <a href="#" class="btn btn-warning">Editar</a>
+                                  <a href="#" class="btn btn-danger">Deletar</a>
+                              </div>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+              <!-- Paginação da tabela -->
+              <nav aria-label="Navegação da tabela">
+                  <ul class="pagination justify-content-center">
+                      <li class="page-item disabled">
+                          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                      </li>
+                      <li class="page-item active" aria-current="page">
+                          <a class="page-link" href="#">1</a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                          <a class="page-link" href="#">Próximo</a>
+                      </li>
+                  </ul>
+              </nav>
+              <!-- Botão para compartilhar os dados da tabela -->
+              <button type="button" class="btn btn-secondary compartilhar">Compartilhar dados da tabela</button>
+          </div>
+      </div>
+  </div>
+  <!-- DEVE IR PARA COMPONENTS COMO "FOOTER" -->
+  <div class="rodape">
+      <p>Desenvolvido por Bing</p>
+  </div>
+</main>
+
