@@ -3,14 +3,14 @@
     <h1 class="login__title">Seja Bem-vindo!</h1>
     <div class="login__field login__userField">
       <label for="username">Usuário</label>
-      <input type="text" [(ngModel)]="user.user" id="username">
+      <input type="text" [(ngModel)]="user.user" id="username" [textContent]="user.user">
     </div>
     <div class="login__field login__passwordField">
       <label for="userpassword">Senha</label>
       <input type="password" id="userpassword" [(ngModel)]="user.password">
     </div>
     <div class="login__checkbox">
-      <input type="checkbox" name="saveLogin" id="saveLogin">
+      <input type="checkbox" (click)="saveData()" name="saveLogin" id="saveLogin">
       <label for="saveLogin">Manter-me conectado</label>
     </div>
     <button (click)="login(user.user, user.password)">Entrar</button>
