@@ -17,11 +17,11 @@ export class AppComponent {
   ) { }
 
   ngOnInit(): void {
-    this.CompaniesService.get().subscribe((data) => {
+    this.CompaniesService.getCompanies().subscribe((data) => {
       console.log(data);
     });
 
-    this.PartnersService.get().subscribe((data) => {
+    this.PartnersService.getPartiners().subscribe((data) => {
       console.log(data);
     });
   }

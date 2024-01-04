@@ -11,7 +11,7 @@ export class CompaniesService {
 
   constructor(private http: HttpClient) {}
 
-  get(): Observable<any> {
+  getCompanies(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
 }

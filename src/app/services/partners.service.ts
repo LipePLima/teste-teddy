@@ -10,7 +10,7 @@ export class PartnersService {
 
   constructor(private http: HttpClient) {}
 
-  get(): Observable<any> {
+  getPartiners(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
 
