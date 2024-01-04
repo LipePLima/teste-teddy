@@ -28,8 +28,25 @@ section {
             margin-bottom: 1rem;
         }
 
+        .erro {
+            color: red;
+            margin-top: .5rem;
+            font-size: 14px;
+        }
+
         .login__checkbox {
             margin-top: .4rem;
+        }
+
+        button {
+            width: 25%;
+            margin-top: 1rem;
+            padding: .2rem;
+            font-size: 14px;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 }

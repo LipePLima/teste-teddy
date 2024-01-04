@@ -1,15 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { User } from '../../types/user'
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+  public user: User = {
+    user: '',
+    password: ''
+  };
 
-  constructor() { }
+  public emptyFields = false
 
-  ngOnInit() {
+  constructor(private router: Router) { }
+
+  login(user: string, password: string) {
+    if (user && password) {
+      this.router.navigate(['/nova-rota']);
+      this.emptyFields = false;
+      
+    } else {
+      this.emptyFields = true;
+      
+    }
   }
-
 }
