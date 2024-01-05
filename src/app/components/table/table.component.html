@@ -13,40 +13,43 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let companie of dataCompanies">
-        <td>{{ companie.id | number:'2.0-0' }}</td>
-        <td>{{ companie.name }}</td>
-        <td>{{ companie.collaboratorsCount }}</td>
-        <td>{{ companie.createdAt }}</td>
-        <td>
-          <span *ngIf="companie.isActive">Ativo</span>
-          <span *ngIf="!companie.isActive">Inativo</span>
-        </td>
-        
-        <td>
-          <div class="acoes">
-            <a href="#" class="btn btn-warning">Editar</a>
-            <a href="#" class="btn btn-danger">Deletar</a>
-          </div>
-        </td>
+      <tr *ngFor="let companie of dataCompanies; let i = index">
+        <ng-container *ngIf="i >= (page - 1) * 10 && i < page * 10">
+          <td>{{ companie.id | number:'2.0-0' }}</td>
+          <td>{{ companie.name }}</td>
+          <td>{{ companie.collaboratorsCount }}</td>
+          <td>{{ companie.createdAt }}</td>
+          <td>
+            <span *ngIf="companie.isActive">Ativo</span>
+            <span *ngIf="!companie.isActive">Inativo</span>
+          </td>
+          <td>
+            <div class="acoes">
+              <a href="#" class="btn btn-warning">Editar</a>
+              <a href="#" class="btn btn-danger">Deletar</a>
+            </div>
+          </td>
+        </ng-container>
       </tr>
     </tbody>
   </table>
   <!-- Paginação da tabela -->
   <nav aria-label="Navegação da tabela">
     <ul class="pagination">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
-          >Anterior</a
-        >
+      <li class="page-item disabled" [class.disabled]="page == 1">
+        <a class="page-link" tabindex="-1" aria-disabled="true" (click)="previousPage()">Anterior</a>
       </li>
-      <li class="page-item active" aria-current="page">
-        <a class="page-link" href="#">1</a>
+      <li 
+        class="page-item active" 
+        aria-current="page" 
+        *ngFor="let n of listPages" 
+        [class.active]="page == n" 
+        [class.disabled]="n > count"
+      >
+        <a class="page-link" (click)="page = n">{{ n }}</a>
       </li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Próximo</a>
+      <li class="page-item" [class.disabled]="page == count">
+        <a class="page-link" (click)="nextPage()">Próximo</a>
       </li>
     </ul>
   </nav>

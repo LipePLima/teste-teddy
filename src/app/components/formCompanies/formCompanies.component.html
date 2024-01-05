@@ -3,8 +3,8 @@
   <h3>Cadastro</h3>
   <form [formGroup]="formCliente" (ngSubmit)="onSubmit()">
       <div class="form-group" *ngFor="let item of formGroup">
-          <label for="nome">{{ item.label }}</label>
-          <input type="{{ item.type }}" class="form-control" id="{{ item.id }}" placeholder="{{ item.placeholder }}" formControlName="{{ item.id }}">
+          <label for="{{ item.idInput }}">{{ item.label }}</label>
+          <input type="{{ item.type }}" class="form-control" id="{{ item.idInput }}" placeholder="{{ item.placeholder }}" formControlName="{{ item.idInput }}">
       </div>
       <button type="submit" class="btn btn-primary" [disabled]="formCliente.invalid">Cadastrar</button>
   </form>

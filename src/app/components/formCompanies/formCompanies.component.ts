@@ -9,26 +9,26 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FormCompaniesComponent implements OnInit {
   public formGroup = [
     {
-      id: 'name',
+      idInput: 'name',
       label: 'Nome:',
       type: 'text',
       placeholder: 'Digite o nome da empresa'
     },
     {
-      id: 'cnpj',
-      label: 'CNPJ:',
+      idInput: 'collaborator',
+      label: 'Número de Colaboradores:',
       type: 'text',
       placeholder: 'Digite o CNPJ da empresa'
     },
     {
-      id: 'email',
-      label: 'E-mail:',
-      type: 'email',
+      idInput: 'date',
+      label: 'Data de Abertura:',
+      type: 'date',
       placeholder: 'Digite o e-mail da empresa'
     },
     {
-      id: 'tel',
-      label: 'Telefone:',
+      idInput: 'status',
+      label: 'Status:',
       type: 'tel',
       placeholder: 'Digite o telefone da empresa'
     },
@@ -41,9 +41,9 @@ export class FormCompaniesComponent implements OnInit {
   ngOnInit() {
     this.formCliente = this.fb.group({
       name: ['', Validators.required],
-      cnpj: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      tel: ['', Validators.required]
+      collaborator: ['', Validators.required],
+      date: ['', [Validators.required, Validators.email]],
+      status: ['', Validators.required]
     });
   }
 
