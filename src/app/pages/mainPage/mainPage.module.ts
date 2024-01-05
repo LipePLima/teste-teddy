@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
 import { MainPageComponent } from './mainPage.component';
@@ -13,12 +14,12 @@ import { FormCompaniesComponent } from 'src/app/components/formCompanies/formCom
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     FormsModule,
     AppRoutingModule
   ],
   declarations: [
     MainPageComponent,
-    
     HeaderComponent,
     FooterComponent,
     ShareButtonComponent,
