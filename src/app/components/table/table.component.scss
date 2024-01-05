@@ -1,15 +1,107 @@
-/* Estilo da tabela */
-.tabela {
-  margin: 20px;
+/* Estilizando a seção que contém a tabela */
+.container__table-companies {
+  margin: 1.5rem;
+  margin-bottom: 3rem;
+
+  /* Estilizando o título da tabela */
+  h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  /* Estilizando a tabela */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+
+    /* Estilizando os cabeçalhos da tabela */
+    th {
+      background-color: #f0f0f0;
+      padding: 10px;
+      text-align: left;
+    }
+
+    /* Estilizando as células da tabela */
+    td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    /* Estilizando as ações da tabela */
+    .acoes {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    /* Estilizando os botões da tabela */
+    .btn {
+      text-decoration: none;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    /* Estilizando o botão de editar */
+    .btn-warning {
+      background-color: #f0ad4e;
+    }
+
+    /* Estilizando o botão de deletar */
+    .btn-danger {
+      background-color: #d9534f;
+    }
+  }
+
+  /* Estilizando a paginação da tabela */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+
+    /* Estilizando os itens da paginação */
+    .page-item {
+      margin: 5px;
+    }
+
+    /* Estilizando os links da paginação */
+    .page-link {
+      display: block;
+      padding: .2rem .5rem;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      text-decoration: none;
+      color: #333;
+      border: 1px solid #ccc;
+    }
+
+    /* Estilizando o item ativo da paginação */
+    .page-item.active .page-link {
+      background-color: #337ab7;
+      color: #fff;
+    }
+
+    /* Estilizando o item desabilitado da paginação */
+    .page-item.disabled .page-link {
+      background-color: #f0f0f0;
+      color: #ccc;
+      cursor: not-allowed;
+    }
+  }
 }
 
-/* Estilo das ações da tabela */
-.acoes {
-  display: flex;
-  justify-content: space-around;
-}
-
-/* Estilo do botão de compartilhar */
-.compartilhar {
-  margin: 20px;
+/* Estilizando o botão de compartilhar */
+app-shareButton {
+  display: block;
+  margin: 10px auto;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #5cb85c;
+  border-radius: 5px;
 }
