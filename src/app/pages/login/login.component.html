@@ -3,17 +3,17 @@
     <h1 class="login__title">Seja Bem-vindo!</h1>
     <div class="login__field login__userField">
       <label for="username">Usuário</label>
-      <input type="text" [(ngModel)]="user.user" id="username" [textContent]="user.user">
+      <input type="text" [(ngModel)]="user.user" id="username">
     </div>
     <div class="login__field login__passwordField">
       <label for="userpassword">Senha</label>
       <input type="password" id="userpassword" [(ngModel)]="user.password">
     </div>
     <div class="login__checkbox">
-      <input type="checkbox" (click)="saveData()" name="saveLogin" id="saveLogin">
+      <input type="checkbox" [(ngModel)]="isChecked" (ngModelChange)="saveData($event)" name="saveLogin" id="saveLogin">
       <label for="saveLogin">Manter-me conectado</label>
     </div>
-    <button (click)="login(user.user, user.password)">Entrar</button>
+    <button type="submit" (click)="login(user.user, user.password)">Entrar</button>
     <div class="erro">
       <span *ngIf="emptyFields">Os campos de usuário e/ou senha devem estar preenchidos!</span>
     </div>

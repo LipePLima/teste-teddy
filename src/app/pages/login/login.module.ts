@@ -12,9 +12,7 @@ import { LoginComponent } from './login.component';
   declarations: [
     LoginComponent,
   ],
-  exports: [
-    LoginComponent,
-  ]
+  exports: []
 })
 
 export class LoginModule { }
