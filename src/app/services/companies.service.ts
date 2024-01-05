@@ -14,4 +14,8 @@ export class CompaniesService {
   getCompanies(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
+
+  deleteCompanie(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`)
+  }
 }

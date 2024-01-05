@@ -25,8 +25,8 @@
           </td>
           <td>
             <div class="acoes">
-              <a href="#" class="btn btn-warning">Editar</a>
-              <a href="#" class="btn btn-danger">Deletar</a>
+              <a class="btn btn-warning">Editar</a>
+              <a class="btn btn-danger" (click)="deleteData(companie.id)">Deletar</a>
             </div>
           </td>
         </ng-container>
@@ -55,4 +55,7 @@
   </nav>
   <!-- Botão para compartilhar os dados da tabela -->
   <app-shareButton></app-shareButton>
+</section>
+<section class="editRow">
+  
 </section>

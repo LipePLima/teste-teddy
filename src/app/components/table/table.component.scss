@@ -37,6 +37,7 @@
 
     /* Estilizando os botões da tabela */
     .btn {
+      cursor: pointer;
       text-decoration: none;
       color: #fff;
       padding: 5px 10px;
@@ -46,11 +47,19 @@
     /* Estilizando o botão de editar */
     .btn-warning {
       background-color: #f0ad4e;
+
+      &:hover {
+        background-color: #d59944;
+      }
     }
 
     /* Estilizando o botão de deletar */
     .btn-danger {
       background-color: #d9534f;
+
+      &:hover {
+        background-color: #be4945;
+      }
     }
   }
 
