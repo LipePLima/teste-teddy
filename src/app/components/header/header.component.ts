@@ -11,7 +11,11 @@ import { deleteData } from '../../types/deleteData';
 })
 
 export class HeaderComponent implements OnInit {
-  public menuNav = ['Parceiros', 'Empresas Externas', 'Sobre']
+  public menuNav = [
+    {menu: 'Parceiros', router: 'mainPage/partners'}, 
+    {menu: 'Empresas Externas', router: 'mainPage/companies'}, 
+    {menu: 'Sobre', router: 'mainPage/about'}
+  ]
 
   constructor(
     private router: Router,

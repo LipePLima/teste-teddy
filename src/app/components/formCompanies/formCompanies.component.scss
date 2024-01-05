@@ -1,0 +1,32 @@
+.container__form {
+    padding: 1.5rem;
+
+    h3 {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+        
+        label {
+            margin-right: .2rem;
+        }
+
+        input {
+            height: 18px;
+            width: 22%;
+            padding: .2rem;
+        }
+    }
+
+    .btn {
+        width: 12%;
+        height: 24px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

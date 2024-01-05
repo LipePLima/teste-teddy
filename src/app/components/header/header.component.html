@@ -3,7 +3,7 @@
         <h1 class="title">Aplicação Web</h1>
     </div>
     <nav>
-        <a href="#" class="menu-item" *ngFor="let item of menuNav">{{ item }}</a>
+        <a routerLink="{{ item.router }}" class="menu-item" *ngFor="let item of menuNav">{{ item.menu }}</a>
         <a class="menu-item" (click)="logout()">Sair</a>
     </nav>
 </header>
