@@ -1,0 +1,73 @@
+<div>
+  <!-- Tabela para listar as empresas externas -->
+  <h3>Listar as empresas externas</h3>
+  <table class="table tabela">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">CNPJ</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Telefone</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Empresa A</td>
+        <td>00.000.000/0000-00</td>
+        <td>empresa_a@email.com</td>
+        <td>(21) 99999-9999</td>
+        <td>
+          <div class="acoes">
+            <a href="#" class="btn btn-warning">Editar</a>
+            <a href="#" class="btn btn-danger">Deletar</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Empresa B</td>
+        <td>11.111.111/1111-11</td>
+        <td>empresa_b@email.com</td>
+        <td>(21) 88888-8888</td>
+        <td>
+          <div class="acoes">
+            <a href="#" class="btn btn-warning">Editar</a>
+            <a href="#" class="btn btn-danger">Deletar</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Empresa C</td>
+        <td>22.222.222/2222-22</td>
+        <td>empresa_c@email.com</td>
+        <td>(21) 77777-7777</td>
+        <td>
+          <div class="acoes">
+            <a href="#" class="btn btn-warning">Editar</a>
+            <a href="#" class="btn btn-danger">Deletar</a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- Paginação da tabela -->
+  <nav aria-label="Navegação da tabela">
+    <ul class="pagination">
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+          >Anterior</a
+        >
+      </li>
+      <li class="page-item active" aria-current="page">
+        <a class="page-link" href="#">1</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Próximo</a>
+      </li>
+    </ul>
+  </nav>
+  <!-- Botão para compartilhar os dados da tabela -->
+  <app-shareButton></app-shareButton>
+</div>

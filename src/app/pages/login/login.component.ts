@@ -29,6 +29,8 @@ export class LoginComponent implements OnInit {
     };
 
     if (Object.values(cookieValues).every(value => value !== '')) {
+      this.router.navigate(['/mainPage']);
+
       if(!this.user.user && !this.user.password) {
         this.user.user     = cookieValues.cookieUSername;
         this.user.password = cookieValues.cookiePassword; 

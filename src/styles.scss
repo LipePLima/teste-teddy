@@ -25,6 +25,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
+	height: 100lvh;
 	line-height: 1;
 }
 ol, ul {
@@ -41,4 +42,9 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+app-root {
+	display: block;
+	height: 100lvh;
 }
