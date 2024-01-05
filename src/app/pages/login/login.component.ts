@@ -3,18 +3,21 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
 import { User } from '../../types/user'
+import { deleteData } from '../../types/deleteData';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
-  public isChecked   = false;
+  public isChecked   = false; 
   public emptyFields = false;
   public user: User  = {
     user: '',
-    password: ''
+    password: '',
+    
   };
 
   constructor(
@@ -25,17 +28,13 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     const cookieValues = {
       cookieUSername: this.cookieService.get('username'),
-      cookiePassword: this.cookieService.get('password')
+      cookiePassword: this.cookieService.get('password'),
+
     };
 
     if (Object.values(cookieValues).every(value => value !== '')) {
       this.router.navigate(['/mainPage']);
 
-      if(!this.user.user && !this.user.password) {
-        this.user.user     = cookieValues.cookieUSername;
-        this.user.password = cookieValues.cookiePassword; 
-
-      }
     } 
   }
 
@@ -61,9 +60,7 @@ export class LoginComponent implements OnInit {
       this.cookieService.set('checkbox', `${event}`);
 
     } else {
-      this.cookieService.delete('username');
-      this.cookieService.delete('password');
-      this.cookieService.delete('checkbox');
+      deleteData(this.cookieService)
 
     }
   }
