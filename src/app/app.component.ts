@@ -12,15 +12,10 @@ export class AppComponent {
   title = 'teste-teddy';
 
   constructor(
-    private CompaniesService: CompaniesService,
     private PartnersService: PartnersService
   ) { }
 
   ngOnInit(): void {
-    this.CompaniesService.getCompanies().subscribe((data) => {
-      console.log('Empresas:', data);
-    });
-
     this.PartnersService.getPartiners().subscribe((data) => {
       console.log('Parceiros:', data);
     });
