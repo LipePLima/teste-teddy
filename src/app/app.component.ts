@@ -18,11 +18,11 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.CompaniesService.getCompanies().subscribe((data) => {
-      console.log(data);
+      console.log('Empresas:', data);
     });
 
     this.PartnersService.getPartiners().subscribe((data) => {
-      console.log(data);
+      console.log('Parceiros:', data);
     });
   }
 }

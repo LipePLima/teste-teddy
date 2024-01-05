@@ -11,6 +11,7 @@ import { deleteData } from '../../types/deleteData';
 })
 
 export class HeaderComponent implements OnInit {
+  public menuNav = ['Parceiros', 'Empresas Externas', 'Sobre']
 
   constructor(
     private router: Router,
@@ -22,6 +23,6 @@ export class HeaderComponent implements OnInit {
 
   public logout(): void {
     deleteData(this.cookieService)
-    // this.router.navigate(['/login']);
+    this.router.navigate(['/login']);
   }
 }
