@@ -13,6 +13,14 @@ export class TableCompanieComponent implements OnInit {
   @Output() newSendData                 = new EventEmitter<DataCompanies>();
   @Input() formInfo: FormData[]         = []; // Lista de objetos de cada campo de formulário para edição de dados de uma companie
   public dataCompanies: DataCompanies[] = []; // Lista de objetos de cada companie
+  public titleColumn = [
+    "Id",
+    "Nome",
+    "Número de Colaboradores",
+    "Data de Abertura",
+    "Status",
+    "Ações",
+  ]
   
   public showField: boolean  = false; // Variável para exibir sessão de edição de dados de uma companie na tabela quando for true
   public listPages: number[] = [1];   // Lista de botões

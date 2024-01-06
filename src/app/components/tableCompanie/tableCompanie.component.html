@@ -4,12 +4,7 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Número de Colaboradores</th>
-        <th scope="col">Data de Abertura</th>
-        <th scope="col">Status</th>
-        <th scope="col">Ações</th>
+        <th scope="col" *ngFor="let item of titleColumn">{{ item }}</th>
       </tr>
     </thead>
     <tbody>

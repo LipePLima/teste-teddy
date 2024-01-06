@@ -4,22 +4,17 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Número de Colaboradores</th>
-        <th scope="col">Data de Abertura</th>
-        <th scope="col">Status</th>
-        <th scope="col">Ações</th>
+        <th scope="col" *ngFor="let item of titleColumn">{{ item }}</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let partner of dataPartners; let i = index">
         <ng-container *ngIf="i >= (page - 1) * 10 && i < page * 10">
-          <td>{{ partner.id | number:'2.0-0' }}</td>
-          <td>{{ partner.name }}</td>
-          <td style="width: 38%;">{{ partner.description }}</td>
-          <td style="width: 11%;">{{ partner.repositoryGit }}</td>
-          <td>{{ partner.urlDoc }}</td>
+          <td style="width: 60px;">{{ partner.id | number:'2.0-0' }}</td>
+          <td style="width: 150px;">{{ partner.name }}</td>
+          <td style="width: 300px;">{{ partner.description }}</td>
+          <td><a href="{{ partner.repositoryGit }}" target="_blank">{{ partner.repositoryGit }}</a></td>
+          <td><a href="{{ partner.urlDoc }}"        target="_blank">{{ partner.urlDoc }}</a></td>
           <td>
             <div class="acoes">
               <a class="btn btn-warning" (click)="showChange(partner.id)">Editar</a>
@@ -56,20 +51,11 @@
 <!-- Campo de edição de partner -->
 <section class="editRow" *ngIf="showField">
   <div class="container__form" (click)="showField = true">
-    <h3>Editar Empresa Externa</h3>
+    <h3>Editar Parceiro</h3>
     <form [formGroup]="formCliente" (ngSubmit)="changeRow(f)" #f="ngForm">
         <div class="form-group" *ngFor="let item of formInfo">
             <label for="{{ item.idInput }}">{{ item.label }}</label>
             <input type="{{ item.type }}" class="form-control" id="{{ item.idInput }}" placeholder="{{ item.placeholder }}" formControlName="{{ item.idInput }}">
-        </div>
-        <div>
-          <label for="status">Status:</label>
-          <div class="selectStatus">
-            <select name="status" id="status" formControlName="status">
-              <option value="true">Ativa</option>
-              <option value="false">Inativa</option>
-            </select>
-          </div>
         </div>
         <div class="buttons">
           <button type="submit" class="btn btn-primary" [disabled]="formCliente.invalid">Atualizar</button>

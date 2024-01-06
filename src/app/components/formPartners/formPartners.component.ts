@@ -19,7 +19,7 @@ export class FormPartnersComponent implements OnInit {
       placeholder: 'Digite o nome do parceiro'
     },
     {
-      idInput: 'decription',
+      idInput: 'description',
       label: 'Descrição:',
       type: 'text',
       placeholder: 'Digite para que serve esta parceria'
@@ -51,7 +51,7 @@ export class FormPartnersComponent implements OnInit {
     // Validação de formulário reativo
     this.formCliente = this.fb.group({
       name: ['', Validators.required],
-      decription: ['', Validators.required],
+      description: ['', Validators.required],
       urlDoc: ['', [Validators.required]],
       repositoryGit: ['', Validators.required]
     });
@@ -74,10 +74,6 @@ export class FormPartnersComponent implements OnInit {
       repositoryGit: f.value.repositoryGit,
       urlDoc: f.value.urlDoc
     }
-
-    console.log(this.dataPartners.length)
-    // console.log(nextPartnerId)
-    console.log(newPartner)
 
     this.updateData(newPartner);
     this.reloadPage()
