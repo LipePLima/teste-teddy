@@ -1,14 +1,12 @@
 /* Estilizando a seção que contém a tabela */
 .container__table-companies {
-  margin: 1.5rem;
-  margin-bottom: 3rem;
+  margin: 1.5rem 0 2.5rem 0;
 
   /* Estilizando o título da tabela */
   h3 {
     font-size: 22px;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #333;
   }
 
   /* Estilizando a tabela */
@@ -102,20 +100,6 @@
   }
 }
 
-/* Estilizando o botão de compartilhar */
-app-shareButton {
-  display: block;
-  margin: 10px auto;
-  width: 100px;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  text-decoration: none;
-  color: #fff;
-  background-color: #5cb85c;
-  border-radius: 5px;
-}
-
 /* Estilizando o contêiner do formulário */
 .editRow {
   display: flex;
@@ -140,7 +124,6 @@ app-shareButton {
       font-size: 22px;
       font-weight: 600;
       margin-bottom: 1rem;
-      color: #333;
     }
 
     /* Estilizando o formulário */

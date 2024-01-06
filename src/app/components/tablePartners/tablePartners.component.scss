@@ -1,14 +1,12 @@
 /* Estilizando a seção que contém a tabela */
 .container__table-partners {
-  margin: 1.5rem;
-  margin-bottom: 3rem;
+  margin: 1.5rem 0 2.5rem 0;
 
   /* Estilizando o título da tabela */
   h3 {
     font-size: 22px;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #333;
   }
 
   /* Estilizando a tabela */
@@ -18,7 +16,7 @@
 
     /* Estilizando os cabeçalhos da tabela */
     th {
-      background-color: #f0f0f0;
+      background-color: #c5c5c5;
       padding: 10px;
       text-align: left;
     }
@@ -105,20 +103,6 @@
   }
 }
 
-/* Estilizando o botão de compartilhar */
-app-shareButton {
-  display: block;
-  margin: 10px auto;
-  width: 100px;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  text-decoration: none;
-  color: #fff;
-  background-color: #5cb85c;
-  border-radius: 5px;
-}
-
 /* Estilizando o contêiner do formulário */
 .editRow {
   display: flex;
@@ -143,7 +127,6 @@ app-shareButton {
       font-size: 22px;
       font-weight: 600;
       margin-bottom: 1rem;
-      color: #333;
     }
 
     /* Estilizando o formulário */

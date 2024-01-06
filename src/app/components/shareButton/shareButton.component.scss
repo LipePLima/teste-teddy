@@ -1,0 +1,22 @@
+/* Estilizando o botão de compartilhar */
+.container__share {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+  }
+
+button {
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #EB6625;
+    color: #fff;
+
+    &:hover {
+        transition: .1s;
+        transform: scale(1.01);
+    }
+}

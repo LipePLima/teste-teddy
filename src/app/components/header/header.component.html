@@ -1,7 +1,5 @@
 <header>
-    <div class="container__title">
-        <h1 class="title">Aplicação Web</h1>
-    </div>
+    <img src="../../../assets/img/logo-teddy.webp" alt="Logo Teddy Open Finance" class="logo">
     <nav>
         <a routerLink="{{ item.router }}" class="menu-item" *ngFor="let item of menuNav">{{ item.menu }}</a>
         <a class="menu-item" (click)="logout()">Sair</a>

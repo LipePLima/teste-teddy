@@ -1,21 +1,23 @@
-<!-- Formulário para cadastrar empresa externa -->
-<div class="container__form">
-  <h3>Cadastro</h3>
-  <form [formGroup]="formCliente" (ngSubmit)="onSubmit(f)" #f="ngForm">
-      <div class="form-group" *ngFor="let item of formInfo">
-          <label for="{{ item.idInput }}">{{ item.label }}</label>
-          <input type="{{ item.type }}" class="form-control" id="{{ item.idInput }}" placeholder="{{ item.placeholder }}" formControlName="{{ item.idInput }}">
-      </div>
-      <div>
-        <label for="status">Status:</label>
-        <div class="selectStatus">
-          <select name="status" id="status" formControlName="status">
-            <option value="true">Ativa</option>
-            <option value="false">Inativa</option>
-          </select>
+<section class="companies">
+  <!-- Formulário para cadastrar empresa externa -->
+  <div class="container__form">
+    <h3>Cadastro</h3>
+    <form [formGroup]="formCliente" (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-group" *ngFor="let item of formInfo">
+            <label for="{{ item.idInput }}">{{ item.label }}</label>
+            <input type="{{ item.type }}" class="form-control" id="{{ item.idInput }}" placeholder="{{ item.placeholder }}" formControlName="{{ item.idInput }}">
         </div>
-      </div>
-      <button type="submit" class="btn btn-primary" [disabled]="formCliente.invalid">Cadastrar</button>
-  </form>
-</div>
-<app-tableCompanie [formInfo]="formInfo" (newSendData)="receiveData($event)"></app-tableCompanie>
+        <div>
+          <label for="status">Status:</label>
+          <div class="selectStatus">
+            <select name="status" id="status" formControlName="status">
+              <option value="true">Ativa</option>
+              <option value="false">Inativa</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="formCliente.invalid">Cadastrar</button>
+    </form>
+  </div>
+  <app-tableCompanie [formInfo]="formInfo" (newSendData)="receiveData($event)"></app-tableCompanie>
+</section>

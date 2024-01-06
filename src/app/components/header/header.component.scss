@@ -1,39 +1,29 @@
 header {
-  background-color: #f0f0f0;
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
 
-  .container__title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 48px;
-
-    .title {
-      font-weight: bold;
-      font-size: 24px;
-    }
+  .logo {
+    width: 120px;
   }
 
   nav {
-    width: 100%;
+    width: calc(100% - 120px);
     display: flex;
-    margin-top: 2rem;
     justify-content: center;
+    align-items: center;
   }
 
   .menu-item {
-    background-color: #fff;
-    padding: .5rem;
-    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 500;
     color: #000;
     text-decoration: none;
     margin-right: 2rem;
 
     &:hover {
       cursor: pointer;
-      transform: .2s;
-      transform: scale(1.01);
-      box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.08);
+      text-decoration: underline;
     }
   }
   
