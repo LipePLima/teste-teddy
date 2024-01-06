@@ -56,10 +56,12 @@ export class TableComponent implements OnInit {
     }
   }
 
+  // Função para exibir a sessão de alteração de dados de uma companie
   showChange(id: number) {
     this.showField = true;
   }
 
+  // Função para alteração dados de uma companie
   changeRow() {
 
   }

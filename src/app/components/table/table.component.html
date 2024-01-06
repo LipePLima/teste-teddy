@@ -57,15 +57,18 @@
   <app-shareButton></app-shareButton>
 </section>
 <!-- Campo de edição de companie -->
-<section class="editRow" (click)="showField = false" *ngIf="showField">
-  <div class="container__form">
+<section class="editRow" *ngIf="showField">
+  <div class="container__form" (click)="showField = true">
     <h3>Editar Empresa Externa</h3>
     <form [formGroup]="formCliente" (ngSubmit)="changeRow()">
         <div class="form-group" *ngFor="let item of formInfo">
             <label for="{{ item.idInput }}">{{ item.label }}</label>
             <input type="{{ item.type }}" class="form-control" id="{{ item.idInput }}" placeholder="{{ item.placeholder }}" formControlName="{{ item.idInput }}">
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="formCliente.invalid">Cadastrar</button>
+        <div class="buttons">
+          <button type="submit" class="btn btn-primary" [disabled]="formCliente.invalid">Cadastrar</button>
+          <button (click)="showField = false">Voltar</button>
+        </div>
     </form>
   </div>
 </section>
