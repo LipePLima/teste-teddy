@@ -1,4 +1,4 @@
-<section class="container__table-companies">
+<section class="container__table-partners">
   <!-- Tabela para listar as empresas externas -->
   <h3>Lista de empresas externas</h3>
   <table class="table">
@@ -13,20 +13,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let companie of dataCompanies; let i = index">
+      <tr *ngFor="let partner of dataPartners; let i = index">
         <ng-container *ngIf="i >= (page - 1) * 10 && i < page * 10">
-          <td>{{ companie.id | number:'2.0-0' }}</td>
-          <td>{{ companie.companyName }}</td>
-          <td>{{ companie.collaboratorsCount }}</td>
-          <td>{{ companie.createdAt }}</td>
+          <td>{{ partner.id | number:'2.0-0' }}</td>
+          <td>{{ partner.companyName }}</td>
+          <td>{{ partner.collaboratorsCount }}</td>
+          <td>{{ partner.createdAt }}</td>
           <td>
-            <span *ngIf="companie.isActive">Ativo</span>
-            <span *ngIf="!companie.isActive">Inativo</span>
+            <span *ngIf="partner.isActive">Ativo</span>
+            <span *ngIf="!partner.isActive">Inativo</span>
           </td>
           <td>
             <div class="acoes">
-              <a class="btn btn-warning" (click)="showChange(companie.id)">Editar</a>
-              <a class="btn btn-danger"  (click)="deleteData(companie.id)">Deletar</a>
+              <a class="btn btn-warning" (click)="showChange(partner.id)">Editar</a>
+              <a class="btn btn-danger"  (click)="deleteData(partner.id)">Deletar</a>
             </div>
           </td>
         </ng-container>
@@ -56,7 +56,7 @@
   <!-- Botão para compartilhar os dados da tabela -->
   <!-- <app-shareButton></app-shareButton> -->
 </section>
-<!-- Campo de edição de companie -->
+<!-- Campo de edição de partner -->
 <section class="editRow" *ngIf="showField">
   <div class="container__form" (click)="showField = true">
     <h3>Editar Empresa Externa</h3>

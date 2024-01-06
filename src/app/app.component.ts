@@ -15,9 +15,5 @@ export class AppComponent {
     private PartnersService: PartnersService
   ) { }
 
-  ngOnInit(): void {
-    this.PartnersService.getPartiners().subscribe((data) => {
-      console.log('Parceiros:', data);
-    });
-  }
+  ngOnInit(): void {}
 }

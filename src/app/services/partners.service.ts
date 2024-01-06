@@ -10,8 +10,19 @@ export class PartnersService {
 
   constructor(private http: HttpClient) {}
 
-  getPartiners(): Observable<any> {
+  getPartners(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
 
+  postPartners(newCompanie: {}): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, newCompanie)
+  }
+ 
+  putPartners(id: number, newCompanie: {}): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, newCompanie)
+  }
+
+  deletePartners(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`)
+  }
 }

@@ -1,4 +1,4 @@
-<!-- Formulário para cadastrar empresa externa -->
+<!-- Formulário para cadastrar parceiros -->
 <div class="container__form">
   <h3>Cadastro</h3>
   <form [formGroup]="formCliente" (ngSubmit)="onSubmit(f)" #f="ngForm">
@@ -18,4 +18,4 @@
       <button type="submit" class="btn btn-primary" [disabled]="formCliente.invalid">Cadastrar</button>
   </form>
 </div>
-<app-tableCompanie [formInfo]="formInfo" (newSendData)="receiveData($event)"></app-tableCompanie>
+<app-table></app-table>

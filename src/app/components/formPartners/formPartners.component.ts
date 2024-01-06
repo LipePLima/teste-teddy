@@ -1,16 +1,16 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 
 import { FormData } from '../../types/formData';
 import { DataCompanies } from '../../types/dataCompanies';
-import { CompaniesService } from '../../services/companies.service';
+import { PartnersService } from '../../services/partners.service';
 
 @Component({
-  selector: 'app-formCompanies',
-  templateUrl: './formCompanies.component.html',
-  styleUrls: ['./formCompanies.component.scss']
+  selector: 'app-formPartners',
+  templateUrl: './formPartners.component.html',
+  styleUrls: ['./formPartners.component.scss']
 })
-export class FormCompaniesComponent implements OnInit {
+export class FormPartnersComponent implements OnInit {
   @Input() formInfo: FormData[] = [
     {
       idInput: 'name',
@@ -36,7 +36,7 @@ export class FormCompaniesComponent implements OnInit {
   public formCliente!: FormGroup;
 
   constructor(
-    private CompaniesService: CompaniesService,
+    private PartnersService: PartnersService,
     private fb: FormBuilder
   ) {}
 
@@ -80,7 +80,7 @@ export class FormCompaniesComponent implements OnInit {
 
   // Função para atualizar dados de uma companie na API
   private updateData(newCompanie: DataCompanies) {
-    this.CompaniesService.postCompanies(newCompanie).subscribe(
+    this.PartnersService.postPartners(newCompanie).subscribe(
       data  => this.dataCompanies.push(data),
       error => console.error(error)
     )

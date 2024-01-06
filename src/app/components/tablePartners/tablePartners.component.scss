@@ -1,0 +1,216 @@
+/* Estilizando a seção que contém a tabela */
+.container__table-companies {
+  margin: 1.5rem;
+  margin-bottom: 3rem;
+
+  /* Estilizando o título da tabela */
+  h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  /* Estilizando a tabela */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+
+    /* Estilizando os cabeçalhos da tabela */
+    th {
+      background-color: #f0f0f0;
+      padding: 10px;
+      text-align: left;
+    }
+
+    /* Estilizando as células da tabela */
+    td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    /* Estilizando as ações da tabela */
+    .acoes {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    /* Estilizando os botões da tabela */
+    .btn {
+      cursor: pointer;
+      text-decoration: none;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    /* Estilizando o botão de editar */
+    .btn-warning {
+      background-color: #f0ad4e;
+
+      &:hover {
+        background-color: #d59944;
+      }
+    }
+
+    /* Estilizando o botão de deletar */
+    .btn-danger {
+      background-color: #d9534f;
+
+      &:hover {
+        background-color: #be4945;
+      }
+    }
+  }
+
+  /* Estilizando a paginação da tabela */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+
+    /* Estilizando os itens da paginação */
+    .page-item {
+      margin: 5px;
+    }
+
+    /* Estilizando os links da paginação */
+    .page-link {
+      cursor: pointer;
+      display: block;
+      padding: 0.2rem 0.5rem;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      text-decoration: none;
+      color: #333;
+      border: 1px solid #ccc;
+    }
+
+    /* Estilizando o item ativo da paginação */
+    .page-item.active .page-link {
+      background-color: #337ab7;
+      color: #fff;
+    }
+
+    /* Estilizando o item desabilitado da paginação */
+    .page-item.disabled .page-link {
+      background-color: #f0f0f0;
+      color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+}
+
+/* Estilizando o botão de compartilhar */
+app-shareButton {
+  display: block;
+  margin: 10px auto;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #5cb85c;
+  border-radius: 5px;
+}
+
+/* Estilizando o contêiner do formulário */
+.editRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: brightness(0.5);
+
+  .container__form {
+    width: 50%;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background: #fff;
+    margin: 1.5rem;
+
+    /* Estilizando o título do formulário */
+    h3 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    /* Estilizando o formulário */
+    form {
+      width: 50%;
+
+      /* Estilizando os grupos de formulário */
+      .form-group {
+        margin: 10px 0;
+
+        /* Estilizando os campos de entrada */
+        input {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+        }
+      }
+
+      /* Estilizando o botão de cadastro */
+      .buttons {
+        display: flex;
+
+        button {
+          cursor: pointer;
+          width: 65%;
+          padding: 10px;
+          border: none;
+          border-radius: 5px;
+          background-color: #c45017;
+          color: #fff;
+          font-weight: bold;
+          margin-right: 1rem;
+
+          &:last-child {
+            background-color: #d13030;
+          }
+        }
+
+        /* Estilizando o botão de cadastro quando desabilitado */
+        button:disabled {
+          background-color: #f0f0f0;
+          color: #ccc;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    /* Estilizando as legendas dos campos */
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .selectStatus {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      height: 26px;
+      padding: 5px;
+      margin-bottom: 1.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+
+      select {
+        width: 100%;
+        border: none;
+        outline: none;
+      }
+    }
+  }
+}

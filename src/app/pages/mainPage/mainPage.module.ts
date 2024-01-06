@@ -2,15 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { CompaniesModule } from '../companies/companies.module';
+import { PartnersModule } from '../partners/partners.module';
 
 import { MainPageComponent } from './mainPage.component';
 import { AppRoutingModule } from '../../app-routing.module';
 import { HeaderComponent } from '../../components/header/header.component';
-import { CompaniesComponent } from '../companies/companies.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 
-import { FormCompaniesComponent } from '../../components/formCompanies/formCompanies.component';
-import { TableCompanieComponent } from '../../components/tableCompanie/tableCompanie.component';
 import { ShareButtonComponent } from '../../components/shareButton/shareButton.component';
 
 @NgModule({
@@ -18,15 +17,14 @@ import { ShareButtonComponent } from '../../components/shareButton/shareButton.c
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CompaniesModule,
+    PartnersModule
   ],
   declarations: [
     MainPageComponent,
     HeaderComponent,
-    CompaniesComponent,
     FooterComponent,
-    FormCompaniesComponent,
-    TableCompanieComponent,
     ShareButtonComponent,
   ],
   exports: [

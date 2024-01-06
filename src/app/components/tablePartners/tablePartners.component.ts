@@ -1,38 +1,40 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
-import { CompaniesService } from '../../services/companies.service';
+import { PartnersService } from '../../services/partners.service';
 import { DataCompanies } from '../../types/dataCompanies';
 import { FormData } from '../../types/formData';
 
 @Component({
-  selector: 'app-tableCompanie',
-  templateUrl: './tableCompanie.component.html',
-  styleUrls: ['./tableCompanie.component.scss']
+  selector: 'app-table',
+  templateUrl: './tablePartners.component.html',
+  styleUrls: ['../tableCompanie/tableCompanie.component.scss']
 })
-export class TableCompanieComponent implements OnInit {
+
+export class TablePartnersComponent implements OnInit {
   @Output() newSendData                 = new EventEmitter<DataCompanies>();
-  @Input() formInfo: FormData[]         = []; // Lista de objetos de cada campo de formulário para edição de dados de uma companie
-  public dataCompanies: DataCompanies[] = []; // Lista de objetos de cada companie
+  @Input() formInfo: FormData[]         = []; // Lista de objetos de cada campo de formulário para edição de dados de uma partners
+  public dataPartners: DataCompanies[] = []; // Lista de objetos de cada partners
   
-  public showField: boolean  = false; // Variável para exibir sessão de edição de dados de uma companie na tabela quando for true
+  public showField: boolean  = false; // Variável para exibir sessão de edição de dados de uma partners na tabela quando for true
   public listPages: number[] = [1];   // Lista de botões
   public page: number        = 1;     // Número da página atual da tabela
   public count: number       = 1;     // Número total de botões
-  private subten: number     = 10;    // Subtrair pelo número de itens na lista dataCompanies
+  private subten: number     = 10;    // Subtrair pelo número de itens na lista datapartners
   private numberId: number   = 0;     // Id do elemento clicado 
   
   public formCliente!: FormGroup;
 
   constructor(
-    private CompaniesService: CompaniesService,
+    private PartnersService: PartnersService,
     private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    // Requisição das companies pelo método GET
-    this.CompaniesService.getCompanies().subscribe(
-      (data) => {
-        this.addCompanieInDataCompanies(data)
+    // Requisição dos partners pelo método GET
+    this.PartnersService.getPartners().subscribe(
+      (data: any) => {
+        console.log(data)
+        this.addCompanieInDataPartners(data)
 
       },
       error => console.error(error)
@@ -47,8 +49,8 @@ export class TableCompanieComponent implements OnInit {
     });
   }
 
-  // função para adicionar companies no array dataCompanies
-  private addCompanieInDataCompanies(data: any): void { 
+  // função para adicionar partners no array dataPartners
+  private addCompanieInDataPartners(data: any): void { 
     for(let companie of data) {
       const dataCompanie: DataCompanies = {
         id: companie.id,
@@ -59,7 +61,7 @@ export class TableCompanieComponent implements OnInit {
       }
 
       this.newSendData.emit(dataCompanie)
-      this.dataCompanies.push(dataCompanie)
+      this.dataPartners.push(dataCompanie)
       this.addButton();
     }
   }
@@ -96,7 +98,7 @@ export class TableCompanieComponent implements OnInit {
 
   // Função para atualizar dados de uma companie na API
   private changeData(newCompanie: DataCompanies) {
-    this.CompaniesService.putCompanies(this.numberId, newCompanie).subscribe(
+    this.PartnersService.putPartners(this.numberId, newCompanie).subscribe(
       data => {
         this.findCompanie(newCompanie)
         this.closeField()
@@ -107,11 +109,11 @@ export class TableCompanieComponent implements OnInit {
 
   // Função de busca para localizar a companie que irá receber alterações
   private findCompanie(newCompanie: DataCompanies) {
-    const index = this.dataCompanies.findIndex(obj => obj.id === this.numberId);
+    const index = this.dataPartners.findIndex(obj => obj.id === this.numberId);
 
     if (index !== -1) {
-      let updatedObj = { ...this.dataCompanies[index], ...newCompanie };
-      this.dataCompanies[index] = updatedObj;
+      let updatedObj = { ...this.dataPartners[index], ...newCompanie };
+      this.dataPartners[index] = updatedObj;
     }
   }
 
@@ -122,7 +124,7 @@ export class TableCompanieComponent implements OnInit {
  
   // função que deleta a companie selecionada da api
   public deleteData(id: number): void {
-    this.CompaniesService.deleteCompanie(id).subscribe(
+    this.PartnersService.deletePartners(id).subscribe(
       data  => {
         this.deleteRow(id)
       },
@@ -132,14 +134,14 @@ export class TableCompanieComponent implements OnInit {
 
   // função que remove instantaneamente a companie da tabela
   private deleteRow(id: number) {
-    this.dataCompanies = this.dataCompanies.filter( item => {
+    this.dataPartners = this.dataPartners.filter( item => {
       return item.id !== id;
     })
   }
 
-  // função para adicionar um botão para cada 11 companies
+  // função para adicionar um botão para cada 11 partners
   private addButton() {
-    if(this.dataCompanies.length - this.subten == 1) {
+    if(this.dataPartners.length - this.subten == 1) {
       this.count++
       this.subten += 10
 
