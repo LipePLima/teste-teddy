@@ -1,19 +1,19 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { PartnersService } from '../../services/partners.service';
-import { DataCompanies } from '../../types/dataCompanies';
 import { FormData } from '../../types/formData';
+import { DataPartners } from 'src/app/types/dataPartners';
 
 @Component({
   selector: 'app-table',
   templateUrl: './tablePartners.component.html',
-  styleUrls: ['../tableCompanie/tableCompanie.component.scss']
+  styleUrls: ['./tablePartners.component.scss']
 })
 
 export class TablePartnersComponent implements OnInit {
-  @Output() newSendData                 = new EventEmitter<DataCompanies>();
-  @Input() formInfo: FormData[]         = []; // Lista de objetos de cada campo de formulário para edição de dados de uma partners
-  public dataPartners: DataCompanies[] = []; // Lista de objetos de cada partners
+  @Output() newSendData               = new EventEmitter<DataPartners>();
+  @Input() formInfo: FormData[]       = []; // Lista de objetos de cada campo de formulário para edição de dados de uma partners
+  public dataPartners: DataPartners[] = []; // Lista de objetos de cada partners
   
   public showField: boolean  = false; // Variável para exibir sessão de edição de dados de uma partners na tabela quando for true
   public listPages: number[] = [1];   // Lista de botões
@@ -34,7 +34,7 @@ export class TablePartnersComponent implements OnInit {
     this.PartnersService.getPartners().subscribe(
       (data: any) => {
         console.log(data)
-        this.addCompanieInDataPartners(data)
+        this.addPartnerInDataPartners(data)
 
       },
       error => console.error(error)
@@ -50,14 +50,14 @@ export class TablePartnersComponent implements OnInit {
   }
 
   // função para adicionar partners no array dataPartners
-  private addCompanieInDataPartners(data: any): void { 
-    for(let companie of data) {
-      const dataCompanie: DataCompanies = {
-        id: companie.id,
-        companyName: companie.companyName,
-        collaboratorsCount: companie.collaboratorsCount,
-        createdAt: new Date(companie.createdAt).toLocaleDateString(),
-        isActive: companie.isActive
+  private addPartnerInDataPartners(data: any): void { 
+    for(let partner of data) {
+      const dataCompanie: DataPartners = {
+        id: partner.id,
+        name: partner.name,
+        description: partner.description,
+        repositoryGit: partner.repositoryGit,
+        urlDoc: partner.urlDoc
       }
 
       this.newSendData.emit(dataCompanie)
@@ -66,14 +66,14 @@ export class TablePartnersComponent implements OnInit {
     }
   }
 
-  // Função para exibir a sessão de alteração de dados de uma companie
+  // Função para exibir a sessão de alteração de dados de um partner
   showChange(id: number) {
     this.showField = true;
 
     this.saveId(id)
   }
 
-  // Função para fechar o campo de edição ao atualizar a companie
+  // Função para fechar o campo de edição ao atualizar o partner
   private closeField() {
     this.showField = false;
   }
@@ -85,19 +85,19 @@ export class TablePartnersComponent implements OnInit {
 
   // Função para alteração dados de uma companie na tabela
   public changeRow(f: FormGroupDirective) {
-    const changeCompanie: DataCompanies = {
+    const changeCompanie: DataPartners = {
       id: this.numberId,
-      collaboratorsCount: Number(f.value.collaborator),
-      companyName: f.value.name,
-      createdAt: f.value.date,
-      isActive: this.convertToBoolean(f.value.status)
+      name: f.value.name,
+      description: f.value.date,
+      repositoryGit: f.value.collaborator,
+      urlDoc: f.value.status
     }
 
     this.changeData(changeCompanie)
   }
 
   // Função para atualizar dados de uma companie na API
-  private changeData(newCompanie: DataCompanies) {
+  private changeData(newCompanie: DataPartners) {
     this.PartnersService.putPartners(this.numberId, newCompanie).subscribe(
       data => {
         this.findCompanie(newCompanie)
@@ -108,18 +108,13 @@ export class TablePartnersComponent implements OnInit {
   }
 
   // Função de busca para localizar a companie que irá receber alterações
-  private findCompanie(newCompanie: DataCompanies) {
+  private findCompanie(newCompanie: DataPartners) {
     const index = this.dataPartners.findIndex(obj => obj.id === this.numberId);
 
     if (index !== -1) {
       let updatedObj = { ...this.dataPartners[index], ...newCompanie };
       this.dataPartners[index] = updatedObj;
     }
-  }
-
-  // Função para converter o valor string da opction de select em boolean
-  convertToBoolean(input: string): boolean {
-    return JSON.parse(input.toLowerCase());
   }
  
   // função que deleta a companie selecionada da api

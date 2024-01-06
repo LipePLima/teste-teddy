@@ -16,13 +16,10 @@
       <tr *ngFor="let partner of dataPartners; let i = index">
         <ng-container *ngIf="i >= (page - 1) * 10 && i < page * 10">
           <td>{{ partner.id | number:'2.0-0' }}</td>
-          <td>{{ partner.companyName }}</td>
-          <td>{{ partner.collaboratorsCount }}</td>
-          <td>{{ partner.createdAt }}</td>
-          <td>
-            <span *ngIf="partner.isActive">Ativo</span>
-            <span *ngIf="!partner.isActive">Inativo</span>
-          </td>
+          <td>{{ partner.name }}</td>
+          <td style="width: 38%;">{{ partner.description }}</td>
+          <td style="width: 11%;">{{ partner.repositoryGit }}</td>
+          <td>{{ partner.urlDoc }}</td>
           <td>
             <div class="acoes">
               <a class="btn btn-warning" (click)="showChange(partner.id)">Editar</a>
