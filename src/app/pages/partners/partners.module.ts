@@ -1,23 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
 
 import { PartnersComponent } from './partners.component';
-import { FormPartnersComponent } from '../../components/formPartners/formPartners.component';
-import { TablePartnersComponent } from '../../components/tablePartners/tablePartners.component';
+import { SharedComponentsModule } from 'src/app/components/shared-components.module';
 
 
 @NgModule({
     imports: [
       CommonModule,
-      ReactiveFormsModule,
-      FormsModule,
+      SharedComponentsModule
     ],
     declarations: [
       PartnersComponent,
-      FormPartnersComponent,
-      TablePartnersComponent
     ],
     exports: [
     ]
