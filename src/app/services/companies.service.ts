@@ -15,8 +15,12 @@ export class CompaniesService {
     return this.http.get(this.apiUrl);
   }
 
-  postCompanies(id: number, newCompanie: {}): Observable<any> {
-    return this.http.post(`${this.apiUrl}/${id}`, newCompanie)
+  postCompanies(newCompanie: {}): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, newCompanie)
+  }
+ 
+  putCompanies(id: number, newCompanie: {}): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, newCompanie)
   }
 
   deleteCompanie(id: number): Observable<any> {

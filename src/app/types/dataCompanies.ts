@@ -1,6 +1,6 @@
 export interface DataCompanies {
     id: number;
-    name: string;
+    companyName: string;
     collaboratorsCount: number;
     createdAt: string;
     isActive: boolean

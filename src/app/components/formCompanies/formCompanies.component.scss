@@ -19,12 +19,6 @@
         .form-group {
             margin: 10px 0;
 
-        /* Estilizando as legendas dos campos */
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
         /* Estilizando os campos de entrada */
         input {
             width: 100%;
@@ -37,6 +31,7 @@
         
         /* Estilizando o botão de cadastro */
         button {
+            cursor: pointer;
             width: 65%;
             padding: 10px;
             border: none;
@@ -51,6 +46,30 @@
             background-color: #f0f0f0;
             color: #ccc;
             cursor: not-allowed;
+        }
+    }
+
+    /* Estilizando as legendas dos campos */
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .selectStatus {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 26px;
+        padding: 5px;
+        margin-bottom: 1.5rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+
+        select {
+            width: 100%;    
+            border: none;
+            outline: none;
         }
     }
 }

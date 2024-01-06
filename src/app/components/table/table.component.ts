@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { CompaniesService } from '../../services/companies.service';
 import { DataCompanies } from '../../types/dataCompanies';
 import { FormData } from '../../types/formData';
@@ -11,14 +11,16 @@ import { FormData } from '../../types/formData';
 })
 
 export class TableComponent implements OnInit {
+  @Output() newSendData                 = new EventEmitter<DataCompanies>();
   @Input() formInfo: FormData[]         = []; // Lista de objetos de cada campo de formulário para edição de dados de uma companie
   public dataCompanies: DataCompanies[] = []; // Lista de objetos de cada companie
   
-  public showField: boolean   = false;
-  public listPages: number[]  = [1];  // Lista de botões
-  public page: number         = 1;    // Número da página atual da tabela
-  public count: number        = 1;    // Número total de botões
-  private subten: number      = 10;   // Subtrair pelo número de itens na lista dataCompanies
+  public showField: boolean  = false; // Variável para exibir sessão de edição de dados de uma companie na tabela quando for true
+  public listPages: number[] = [1];   // Lista de botões
+  public page: number        = 1;     // Número da página atual da tabela
+  public count: number       = 1;     // Número total de botões
+  private subten: number     = 10;    // Subtrair pelo número de itens na lista dataCompanies
+  private numberId: number   = 0;     // Id do elemento clicado 
   
   public formCliente!: FormGroup;
 
@@ -28,15 +30,20 @@ export class TableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.CompaniesService.getCompanies().subscribe((data) => {
-      this.addCompanieInDataCompanies(data)
-    });
+    this.CompaniesService.getCompanies().subscribe(
+      (data) => {
+        this.addCompanieInDataCompanies(data)
+        console.log(data)
+
+      },
+      error => console.error(error)
+    );
 
     this.formCliente = this.fb.group({
-      name: ['', Validators.required],
+      name:         ['', Validators.required],
       collaborator: ['', Validators.required],
-      date: ['', [Validators.required]],
-      status: ['', Validators.required]
+      date:         ['', [Validators.required]],
+      status:       ['', Validators.required]
     });
   }
 
@@ -45,12 +52,13 @@ export class TableComponent implements OnInit {
     for(let companie of data) {
       const dataCompanie: DataCompanies = {
         id: companie.id,
-        name: companie.companyName,
+        companyName: companie.companyName,
         collaboratorsCount: companie.collaboratorsCount,
         createdAt: new Date(companie.createdAt).toLocaleDateString(),
         isActive: companie.isActive
       }
 
+      this.newSendData.emit(dataCompanie)
       this.dataCompanies.push(dataCompanie)
       this.addButton();
     }
@@ -59,11 +67,56 @@ export class TableComponent implements OnInit {
   // Função para exibir a sessão de alteração de dados de uma companie
   showChange(id: number) {
     this.showField = true;
+
+    this.saveId(id)
   }
 
-  // Função para alteração dados de uma companie
-  changeRow() {
+  // Função para fechar o campo de edição ao atualizar a companie
+  private closeField() {
+    this.showField = false;
+  }
 
+  // Função para armazenar o id capturado pela função showChange
+  private saveId(id: number) {
+    this.numberId = id
+  }
+
+  // Função para alteração dados de uma companie na tabela
+  public changeRow(f: FormGroupDirective) {
+    const changeCompanie: DataCompanies = {
+      id: this.numberId,
+      collaboratorsCount: Number(f.value.collaborator),
+      companyName: f.value.name,
+      createdAt: f.value.date,
+      isActive: this.convertToBoolean(f.value.status)
+    }
+
+    this.changeData(changeCompanie)
+  }
+
+  // Função para atualizar dados de uma companie na API
+  private changeData(newCompanie: DataCompanies) {
+    this.CompaniesService.putCompanies(this.numberId, newCompanie).subscribe(
+      data => {
+        this.findCompanie(newCompanie)
+        this.closeField()
+      },
+      error => console.error(error)
+    )
+  }
+
+  private findCompanie(newCompanie: DataCompanies) {
+    const index = this.dataCompanies.findIndex(obj => obj.id === this.numberId);
+
+    if (index !== -1) {
+      let updatedObj = { ...this.dataCompanies[index], ...newCompanie };
+      this.dataCompanies[index] = updatedObj;
+    }
+  }
+
+  // Função para converter o valor string da opction de select em boolean
+  convertToBoolean(input: string): boolean {
+    return JSON.parse(input.toLowerCase());
   }
  
   // função que deleta a companie selecionada da api
