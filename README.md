@@ -60,9 +60,9 @@ Esta aplicação é uma plataforma de gestão de parceiros e empresas externas, 
 
   ### Clone o repositório atráves de SSH ou HTTPS
 
-  SSH: `git clone git@github.com:GustavoDe/Desafio-DropMail.me.git`
+  SSH: `git clone git@github.com:LipePLima/teste-teddy.git`
 
-  HTTPS: `git clone https://github.com/GustavoDe/Desafio-DropMail.me.git`
+  HTTPS: `git clone https://github.com/LipePLima/teste-teddy.git`
 
   ### Rodando o projeto
   
