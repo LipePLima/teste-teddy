@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { MainPageComponent } from './pages/mainPage/mainPage.component';
 import { FormCompaniesComponent } from './components/formCompanies/formCompanies.component';
+import { CompaniesComponent } from './pages/companies/companies.component';
 
 const routes: Routes = [
   { 
@@ -26,7 +27,7 @@ const routes: Routes = [
       },
       {
         path: 'companies',
-        component: FormCompaniesComponent
+        component: CompaniesComponent
       }
     ] 
   },

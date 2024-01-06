@@ -6,10 +6,12 @@ import { FormsModule } from '@angular/forms';
 import { MainPageComponent } from './mainPage.component';
 import { AppRoutingModule } from '../../app-routing.module';
 import { HeaderComponent } from '../../components/header/header.component';
+import { CompaniesComponent } from '../companies/companies.component';
 import { FooterComponent } from '../../components/footer/footer.component';
-import { ShareButtonComponent } from '../../components/shareButton/shareButton.component';
-import { TableCompanieComponent } from '../../components/tableCompanie/tableCompanie.component';
+
 import { FormCompaniesComponent } from '../../components/formCompanies/formCompanies.component';
+import { TableCompanieComponent } from '../../components/tableCompanie/tableCompanie.component';
+import { ShareButtonComponent } from '../../components/shareButton/shareButton.component';
 
 @NgModule({
   imports: [
@@ -21,10 +23,11 @@ import { FormCompaniesComponent } from '../../components/formCompanies/formCompa
   declarations: [
     MainPageComponent,
     HeaderComponent,
+    CompaniesComponent,
     FooterComponent,
-    ShareButtonComponent,
-    TableCompanieComponent,
     FormCompaniesComponent,
+    TableCompanieComponent,
+    ShareButtonComponent,
   ],
   exports: [
   ]
