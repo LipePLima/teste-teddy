@@ -164,4 +164,14 @@ export class TableCompanieComponent implements OnInit {
   public previousPage() {
     this.page--;
   }
+
+  // função de paginação da tabela de acordo com a url compartilhada
+  showSharedPage(): void {
+    const urlParams  = new URLSearchParams(window.location.search).get('page');
+    const numberPage = Number(urlParams);
+
+    if (numberPage && !isNaN(numberPage)) {
+      this.page = numberPage
+    }
+  }
 }

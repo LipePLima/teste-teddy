@@ -13,7 +13,6 @@ import { DataPartners } from 'src/app/types/dataPartners';
 export class TablePartnersComponent implements OnInit {
   @Output() newSendData               = new EventEmitter<DataPartners>();
   @Input() formInfo: FormData[]       = []; // Lista de objetos de cada campo de formulário para edição de dados de uma partners
-  @Input() page: number               = 1;  // Número da página atual da tabela
   public dataPartners: DataPartners[] = []; // Lista de objetos de cada partners
   public titleColumn = [
     'Id',
@@ -26,6 +25,7 @@ export class TablePartnersComponent implements OnInit {
   
   public showField: boolean  = false; // Variável para exibir sessão de edição de dados de uma partners na tabela quando for true
   public listPages: number[] = [1];   // Lista de botões   
+  public page: number        = 1;  // Número da página atual da tabela
   public count: number       = 1;     // Número total de botões
   private subten: number     = 10;    // Subtrair pelo número de itens na lista datapartners
   private numberId: number   = 0;     // Id do elemento clicado 
@@ -169,7 +169,7 @@ export class TablePartnersComponent implements OnInit {
 
   // função de paginação da tabela de acordo com a url compartilhada
   showSharedPage(): void {
-    const urlParams = new URLSearchParams(window.location.search).get('page');
+    const urlParams  = new URLSearchParams(window.location.search).get('page');
     const numberPage = Number(urlParams);
 
     if (numberPage && !isNaN(numberPage)) {
