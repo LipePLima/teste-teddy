@@ -54,20 +54,20 @@ Esta aplicação é uma plataforma de gestão de parceiros e empresas externas, 
 
   ### Necessário ter instalado:
 
-    - Node.js;
-    - Npm;
-    - Git;
+  - Node.js;
+  - Npm;
+  - Git;
 
   ### Clone o repositório atráves de SSH ou HTTPS
 
-    SSH: ```git clone git@github.com:GustavoDe/Desafio-DropMail.me.git```
+  SSH: `git clone git@github.com:GustavoDe/Desafio-DropMail.me.git`
 
-    HTTPS: ```git clone https://github.com/GustavoDe/Desafio-DropMail.me.git```
+  HTTPS: `git clone https://github.com/GustavoDe/Desafio-DropMail.me.git`
 
   ### Rodando o projeto
   
-    1. Instale as dependências do projeto com: ```npm i --legacy-peer-deps```;
-    2. Inicie o servidor local do projeto com: ```ng serve```
+  1. Instale as dependências do projeto com: `npm i --legacy-peer-deps`;
+  2. Inicie o servidor local do projeto com: `ng serve`
 
 ## Contatos
 
