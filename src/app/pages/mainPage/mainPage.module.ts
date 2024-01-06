@@ -8,7 +8,7 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ShareButtonComponent } from '../../components/shareButton/shareButton.component';
-import { TableComponent } from '../../components/table/table.component';
+import { TableCompanieComponent } from '../../components/tableCompanie/tableCompanie.component';
 import { FormCompaniesComponent } from '../../components/formCompanies/formCompanies.component';
 
 @NgModule({
@@ -23,7 +23,7 @@ import { FormCompaniesComponent } from '../../components/formCompanies/formCompa
     HeaderComponent,
     FooterComponent,
     ShareButtonComponent,
-    TableComponent,
+    TableCompanieComponent,
     FormCompaniesComponent,
   ],
   exports: [

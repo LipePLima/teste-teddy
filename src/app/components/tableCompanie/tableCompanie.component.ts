@@ -6,11 +6,11 @@ import { FormData } from '../../types/formData';
 
 @Component({
   selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  templateUrl: './tableCompanie.component.html',
+  styleUrls: ['./tableCompanie.component.scss']
 })
 
-export class TableComponent implements OnInit {
+export class TableCompanieComponent implements OnInit {
   @Output() newSendData                 = new EventEmitter<DataCompanies>();
   @Input() formInfo: FormData[]         = []; // Lista de objetos de cada campo de formulário para edição de dados de uma companie
   public dataCompanies: DataCompanies[] = []; // Lista de objetos de cada companie
@@ -47,7 +47,7 @@ export class TableComponent implements OnInit {
     });
   }
 
-  // função para adicionar um objeto contendo dados de um companie no array dataCompanies
+  // função para adicionar companies no array dataCompanies
   private addCompanieInDataCompanies(data: any): void { 
     for(let companie of data) {
       const dataCompanie: DataCompanies = {
