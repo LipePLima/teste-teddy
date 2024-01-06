@@ -39,7 +39,7 @@ Esta aplicação é uma plataforma de gestão de parceiros e empresas externas, 
   - [x] Edição de Parceiro e de Empresa Externa;
   - [x] Remoção de Parceiro e de Empresa Externa;
   - [x] Páginação de tabelas;
-  - [ ] Compartilhamento;
+  - [x] Botão de Compartilhamento com página da tabela;
   - [x] Botão de Logout;    
 
 
