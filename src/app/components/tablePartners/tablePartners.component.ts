@@ -13,6 +13,7 @@ import { DataPartners } from 'src/app/types/dataPartners';
 export class TablePartnersComponent implements OnInit {
   @Output() newSendData               = new EventEmitter<DataPartners>();
   @Input() formInfo: FormData[]       = []; // Lista de objetos de cada campo de formulário para edição de dados de uma partners
+  @Input() page: number               = 1;  // Número da página atual da tabela
   public dataPartners: DataPartners[] = []; // Lista de objetos de cada partners
   public titleColumn = [
     'Id',
@@ -24,8 +25,7 @@ export class TablePartnersComponent implements OnInit {
   ]
   
   public showField: boolean  = false; // Variável para exibir sessão de edição de dados de uma partners na tabela quando for true
-  public listPages: number[] = [1];   // Lista de botões
-  public page: number        = 1;     // Número da página atual da tabela
+  public listPages: number[] = [1];   // Lista de botões   
   public count: number       = 1;     // Número total de botões
   private subten: number     = 10;    // Subtrair pelo número de itens na lista datapartners
   private numberId: number   = 0;     // Id do elemento clicado 
@@ -55,6 +55,8 @@ export class TablePartnersComponent implements OnInit {
       urlDoc: ['', [Validators.required]],
       repositoryGit: ['', Validators.required]
     });
+
+    this.showSharedPage()
   }
 
   // função para adicionar partners no array dataPartners
@@ -75,24 +77,24 @@ export class TablePartnersComponent implements OnInit {
   }
 
   // Função para exibir a sessão de alteração de dados de um partner
-  showChange(id: number) {
+  showChange(id: number): void {
     this.showField = true;
 
     this.saveId(id)
   }
 
   // Função para fechar o campo de edição ao atualizar o partner
-  private closeField() {
+  private closeField(): void {
     this.showField = false;
   }
 
   // Função para armazenar o id capturado pela função showChange
-  private saveId(id: number) {
+  private saveId(id: number): void {
     this.numberId = id
   }
 
   // Função para alteração dados de um partner na tabela
-  public changeRow(f: FormGroupDirective) {
+  public changeRow(f: FormGroupDirective): void {
     const changePartner: DataPartners = {
       id: this.numberId,
       name: f.value.name,
@@ -108,7 +110,7 @@ export class TablePartnersComponent implements OnInit {
   }
 
   // Função para atualizar dados de uma partner na API
-  private changeData(newPartner: DataPartners) {
+  private changeData(newPartner: DataPartners): void {
     this.PartnersService.putPartners(this.numberId, newPartner).subscribe(
       data => {
         this.findPartner(newPartner)
@@ -119,7 +121,7 @@ export class TablePartnersComponent implements OnInit {
   }
 
   // Função de busca para localizar a partner que irá receber alterações
-  private findPartner(newPartner: DataPartners) {
+  private findPartner(newPartner: DataPartners): void {
     const index = this.dataPartners.findIndex(obj => obj.id === this.numberId);
 
     if (index !== -1) {
@@ -139,14 +141,14 @@ export class TablePartnersComponent implements OnInit {
   }
 
   // função que remove instantaneamente a partner da tabela
-  private deleteRow(id: number) {
+  private deleteRow(id: number): void {
     this.dataPartners = this.dataPartners.filter( item => {
       return item.id !== id;
     })
   }
 
   // função para adicionar um botão para cada 11 partners
-  private addButton() {
+  private addButton(): void {
     if(this.dataPartners.length - this.subten == 1) {
       this.count++
       this.subten += 10
@@ -156,12 +158,22 @@ export class TablePartnersComponent implements OnInit {
   }
 
   // função para ir para a próxima página da tabela
-  public nextPage() {
+  public nextPage(): void {
     this.page++;
   }
 
   // função para ir para a página anterior da tabela
-  public previousPage() {
+  public previousPage(): void {
     this.page--;
+  }
+
+  // função de paginação da tabela de acordo com a url compartilhada
+  showSharedPage(): void {
+    const urlParams = new URLSearchParams(window.location.search).get('page');
+    const numberPage = Number(urlParams);
+
+    if (numberPage && !isNaN(numberPage)) {
+      this.page = numberPage
+    }
   }
 }
