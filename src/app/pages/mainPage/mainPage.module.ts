@@ -8,8 +8,8 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ShareButtonComponent } from '../../components/shareButton/shareButton.component';
-import { TableComponent } from 'src/app/components/table/table.component';
-import { FormCompaniesComponent } from 'src/app/components/formCompanies/formCompanies.component';
+import { TableComponent } from '../../components/table/table.component';
+import { FormCompaniesComponent } from '../../components/formCompanies/formCompanies.component';
 
 @NgModule({
   imports: [
@@ -24,9 +24,10 @@ import { FormCompaniesComponent } from 'src/app/components/formCompanies/formCom
     FooterComponent,
     ShareButtonComponent,
     TableComponent,
-    FormCompaniesComponent
+    FormCompaniesComponent,
   ],
-  exports: []
+  exports: [
+  ]
 })
 
 export class MainPageModule { }

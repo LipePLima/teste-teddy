@@ -1,27 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CompaniesService } from '../../services/companies.service';
-import { DataCompanies } from 'src/app/types/dataCompanies';
+import { DataCompanies } from '../../types/dataCompanies';
+import { FormData } from '../../types/formData';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit {
-  public dataCompanies: DataCompanies[] = []; // Lista de objetos de cada companie
 
-  public listPages: number[] = [1]; // Lista de botões
-  public page: number        = 1;   // Número da página atual da tabela
-  public count: number       = 1;   // Número total de botões
-  private subten: number     = 10;  // Subtrair pelo número de itens na lista dataCompanies
+export class TableComponent implements OnInit {
+  @Input() formInfo: FormData[]         = []; // Lista de objetos de cada campo de formulário para edição de dados de uma companie
+  public dataCompanies: DataCompanies[] = []; // Lista de objetos de cada companie
+  
+  public showField: boolean   = false;
+  public listPages: number[]  = [1];  // Lista de botões
+  public page: number         = 1;    // Número da página atual da tabela
+  public count: number        = 1;    // Número total de botões
+  private subten: number      = 10;   // Subtrair pelo número de itens na lista dataCompanies
+  
+  public formCliente!: FormGroup;
 
   constructor(
     private CompaniesService: CompaniesService,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
     this.CompaniesService.getCompanies().subscribe((data) => {
       this.addCompanieInDataCompanies(data)
+    });
+
+    this.formCliente = this.fb.group({
+      name: ['', Validators.required],
+      collaborator: ['', Validators.required],
+      date: ['', [Validators.required]],
+      status: ['', Validators.required]
     });
   }
 
@@ -41,6 +56,15 @@ export class TableComponent implements OnInit {
     }
   }
 
+  showChange(id: number) {
+    this.showField = true;
+  }
+
+  changeRow() {
+
+  }
+ 
+  // função que deleta a companie selecionada da api
   public deleteData(id: number): void {
     this.CompaniesService.deleteCompanie(id).subscribe(
       data  => {
@@ -50,6 +74,7 @@ export class TableComponent implements OnInit {
     )
   }
 
+  // função que remove instantaneamente a companie da tabela
   private deleteRow(id: number) {
     this.dataCompanies = this.dataCompanies.filter( item => {
       return item.id !== id;

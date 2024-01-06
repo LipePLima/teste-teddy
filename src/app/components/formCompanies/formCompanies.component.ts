@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { FormData } from '../../types/formData';
 
 @Component({
   selector: 'app-formCompanies',
@@ -7,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./formCompanies.component.scss']
 })
 export class FormCompaniesComponent implements OnInit {
-  public formGroup = [
+  @Input() formInfo: FormData[] = [
     {
       idInput: 'name',
       label: 'Nome:',
@@ -18,19 +20,19 @@ export class FormCompaniesComponent implements OnInit {
       idInput: 'collaborator',
       label: 'Número de Colaboradores:',
       type: 'text',
-      placeholder: 'Digite o CNPJ da empresa'
+      placeholder: 'Digite o número de colaboradores'
     },
     {
       idInput: 'date',
       label: 'Data de Abertura:',
       type: 'date',
-      placeholder: 'Digite o e-mail da empresa'
+      placeholder: ''
     },
     {
       idInput: 'status',
       label: 'Status:',
       type: 'tel',
-      placeholder: 'Digite o telefone da empresa'
+      placeholder: 'Digite o status da empresa'
     },
   ]
 
@@ -50,5 +52,4 @@ export class FormCompaniesComponent implements OnInit {
   onSubmit() {
 
   }
-
 }

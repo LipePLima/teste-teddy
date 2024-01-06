@@ -25,8 +25,8 @@
           </td>
           <td>
             <div class="acoes">
-              <a class="btn btn-warning">Editar</a>
-              <a class="btn btn-danger" (click)="deleteData(companie.id)">Deletar</a>
+              <a class="btn btn-warning" (click)="showChange(companie.id)">Editar</a>
+              <a class="btn btn-danger"  (click)="deleteData(companie.id)">Deletar</a>
             </div>
           </td>
         </ng-container>
@@ -56,6 +56,16 @@
   <!-- Botão para compartilhar os dados da tabela -->
   <app-shareButton></app-shareButton>
 </section>
-<section class="editRow">
-  
+<!-- Campo de edição de companie -->
+<section class="editRow" (click)="showField = false" *ngIf="showField">
+  <div class="container__form">
+    <h3>Editar Empresa Externa</h3>
+    <form [formGroup]="formCliente" (ngSubmit)="changeRow()">
+        <div class="form-group" *ngFor="let item of formInfo">
+            <label for="{{ item.idInput }}">{{ item.label }}</label>
+            <input type="{{ item.type }}" class="form-control" id="{{ item.idInput }}" placeholder="{{ item.placeholder }}" formControlName="{{ item.idInput }}">
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="formCliente.invalid">Cadastrar</button>
+    </form>
+  </div>
 </section>

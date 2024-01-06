@@ -115,3 +115,77 @@ app-shareButton {
   background-color: #5cb85c;
   border-radius: 5px;
 }
+
+/* Estilizando o contêiner do formulário */
+.editRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: brightness(0.5);
+  
+  .container__form {
+    width: 50%;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background: #fff;
+    margin: 1.5rem;
+  
+      /* Estilizando o título do formulário */
+      h3 {
+          font-size: 22px;
+          font-weight: 600;
+          margin-bottom: 1rem;
+          color: #333;
+      }
+  
+      /* Estilizando o formulário */
+      form {
+          width: 50%;
+  
+          /* Estilizando os grupos de formulário */
+          .form-group {
+              margin: 10px 0;
+  
+          /* Estilizando as legendas dos campos */
+          label {
+              display: block;
+              margin-bottom: 5px;
+          }
+  
+          /* Estilizando os campos de entrada */
+          input {
+              width: 100%;
+              padding: 10px;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+          }
+  
+          }
+          
+          /* Estilizando o botão de cadastro */
+          button {
+              width: 65%;
+              padding: 10px;
+              border: none;
+              border-radius: 5px;
+              background-color: #C45017;
+              color: #fff;
+              font-weight: bold;
+          }
+  
+          /* Estilizando o botão de cadastro quando desabilitado */
+          button:disabled {
+              background-color: #f0f0f0;
+              color: #ccc;
+              cursor: not-allowed;
+          }
+      }
+  }
+}
+
+
