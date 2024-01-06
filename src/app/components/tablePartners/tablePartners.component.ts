@@ -5,7 +5,7 @@ import { FormData } from '../../types/formData';
 import { DataPartners } from 'src/app/types/dataPartners';
 
 @Component({
-  selector: 'app-table',
+  selector: 'app-tablePartners',
   templateUrl: './tablePartners.component.html',
   styleUrls: ['./tablePartners.component.scss']
 })
@@ -43,16 +43,16 @@ export class TablePartnersComponent implements OnInit {
     // Validação de formulário reativo
     this.formCliente = this.fb.group({
       name: ['', Validators.required],
-      collaborator: ['', Validators.required],
-      date: ['', [Validators.required]],
-      status: ['', Validators.required]
+      decription: ['', Validators.required],
+      urlDoc: ['', [Validators.required]],
+      repositoryGit: ['', Validators.required]
     });
   }
 
   // função para adicionar partners no array dataPartners
   private addPartnerInDataPartners(data: any): void { 
     for(let partner of data) {
-      const dataCompanie: DataPartners = {
+      const dataPartner: DataPartners = {
         id: partner.id,
         name: partner.name,
         description: partner.description,
@@ -60,8 +60,8 @@ export class TablePartnersComponent implements OnInit {
         urlDoc: partner.urlDoc
       }
 
-      this.newSendData.emit(dataCompanie)
-      this.dataPartners.push(dataCompanie)
+      this.newSendData.emit(dataPartner)
+      this.dataPartners.push(dataPartner)
       this.addButton();
     }
   }

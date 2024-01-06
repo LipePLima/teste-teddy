@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 
 import { FormData } from '../../types/formData';
-import { DataCompanies } from '../../types/dataCompanies';
+import { DataPartners } from '../../types/dataPartners';
 import { PartnersService } from '../../services/partners.service';
 
 @Component({
@@ -16,23 +16,30 @@ export class FormPartnersComponent implements OnInit {
       idInput: 'name',
       label: 'Nome:',
       type: 'text',
-      placeholder: 'Digite o nome da empresa'
+      placeholder: 'Digite o nome do parceiro'
     },
     {
-      idInput: 'collaborator',
-      label: 'Número de Colaboradores:',
-      type: 'number',
-      placeholder: 'Digite o número de colaboradores'
+      idInput: 'decription',
+      label: 'Descrição:',
+      type: 'text',
+      placeholder: 'Digite para que serve esta parceria'
     },
     {
-      idInput: 'date',
-      label: 'Data de Abertura:',
-      type: 'date',
-      placeholder: ''
-    }
+      idInput: 'urlDoc',
+      label: 'Url da Documentação:',
+      type: 'text',
+      placeholder: 'Digite a url da documentação do parceiro'
+    },
+    {
+      idInput: 'repositoryGit',
+      label: 'Repositório Git:',
+      type: 'text',
+      placeholder: 'Digite a url do repositório git do parceiro'
+    },
+
   ]
 
-  private dataCompanies: DataCompanies[] = []
+  private dataPartners: DataPartners[] = []
   public formCliente!: FormGroup;
 
   constructor(
@@ -41,33 +48,38 @@ export class FormPartnersComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // Validação de formulário reativo
     this.formCliente = this.fb.group({
       name: ['', Validators.required],
-      collaborator: ['', Validators.required],
-      date: ['', [Validators.required]],
-      status: ['', Validators.required]
+      decription: ['', Validators.required],
+      urlDoc: ['', [Validators.required]],
+      repositoryGit: ['', Validators.required]
     });
   }
 
-  // Função para receber o array de companies do componente table
-  receiveData(dataCompanies: DataCompanies) {
-    this.dataCompanies.push(dataCompanies)
+  // Função para receber o array de partners do componente table
+  receiveData(DataPartners: DataPartners) {
+    this.dataPartners.push(DataPartners)
   }
 
   // Função para tratar os dados do formulário para a API
   onSubmit(f: FormGroupDirective) {
-    const lastCompanie   = this.dataCompanies[this.dataCompanies.length - 1];
-    const nextCompanieId = Number(lastCompanie.id) + 1;
+    const lastPartner   = this.dataPartners[this.dataPartners.length - 1];
+    const nextPartnerId = Number(lastPartner.id) + 1;
 
-    const newCompanie: DataCompanies = {
-      id: nextCompanieId,
-      collaboratorsCount: Number(f.value.collaborator),
-      companyName: f.value.name,
-      createdAt: f.value.date,
-      isActive: this.convertToBoolean(f.value.status)
+    const newPartner: DataPartners = {
+      id: nextPartnerId,
+      name: f.value.name,
+      description: f.value.description,
+      repositoryGit: f.value.repositoryGit,
+      urlDoc: f.value.urlDoc
     }
 
-    this.updateData(newCompanie);
+    console.log(this.dataPartners.length)
+    // console.log(nextPartnerId)
+    console.log(newPartner)
+
+    this.updateData(newPartner);
     this.reloadPage()
   }
 
@@ -78,16 +90,11 @@ export class FormPartnersComponent implements OnInit {
     }, 200)
   }
 
-  // Função para atualizar dados de uma companie na API
-  private updateData(newCompanie: DataCompanies) {
-    this.PartnersService.postPartners(newCompanie).subscribe(
-      data  => this.dataCompanies.push(data),
+  // Função para atualizar dados de um Partner na API
+  private updateData(newPartner: DataPartners) {
+    this.PartnersService.postPartners(newPartner).subscribe(
+      data  => this.dataPartners.push(data),
       error => console.error(error)
     )
-  }
-
-  // Função para converter o valor string da opction de select em boolean
-  convertToBoolean(input: string): boolean {
-    return JSON.parse(input.toLowerCase());
   }
 }

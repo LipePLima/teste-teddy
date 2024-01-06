@@ -6,16 +6,7 @@
           <label for="{{ item.idInput }}">{{ item.label }}</label>
           <input type="{{ item.type }}" class="form-control" id="{{ item.idInput }}" placeholder="{{ item.placeholder }}" formControlName="{{ item.idInput }}">
       </div>
-      <div>
-        <label for="status">Status:</label>
-        <div class="selectStatus">
-          <select name="status" id="status" formControlName="status">
-            <option value="true">Ativa</option>
-            <option value="false">Inativa</option>
-          </select>
-        </div>
-      </div>
       <button type="submit" class="btn btn-primary" [disabled]="formCliente.invalid">Cadastrar</button>
   </form>
 </div>
-<app-table></app-table>
+<app-tablePartners [formInfo]="formInfo" (newSendData)="receiveData($event)"></app-tablePartners>
