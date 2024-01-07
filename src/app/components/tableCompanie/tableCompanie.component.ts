@@ -12,6 +12,7 @@ import { FormData } from '../../types/formData';
 export class TableCompanieComponent implements OnInit {
   @Output() newSendData                 = new EventEmitter<DataCompanies>();
   @Input() formInfo: FormData[]         = []; // Lista de objetos de cada campo de formulário para edição de dados de uma companie
+  @Input() page: number        = 1;     // Número da página atual da tabela
   public dataCompanies: DataCompanies[] = []; // Lista de objetos de cada companie
   public titleColumn = [
     "Id",
@@ -24,7 +25,6 @@ export class TableCompanieComponent implements OnInit {
   
   public showField: boolean  = false; // Variável para exibir sessão de edição de dados de uma companie na tabela quando for true
   public listPages: number[] = [1];   // Lista de botões
-  public page: number        = 1;     // Número da página atual da tabela
   public count: number       = 1;     // Número total de botões
   private subten: number     = 10;    // Subtrair pelo número de itens na lista dataCompanies
   private numberId: number   = 0;     // Id do elemento clicado 
@@ -53,6 +53,8 @@ export class TableCompanieComponent implements OnInit {
       date: ['', [Validators.required]],
       status: ['', Validators.required]
     });
+
+    this.showSharedPage()
   }
 
   // função para adicionar companies no array dataCompanies
