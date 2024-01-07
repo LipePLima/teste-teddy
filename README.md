@@ -69,6 +69,10 @@ Esta aplicação é uma plataforma de gestão de parceiros e empresas externas, 
   1. Instale as dependências do projeto com: `npm i --legacy-peer-deps`;
   2. Inicie o servidor local do projeto com: `ng serve`
 
+## Apresentação
+
+[Vídeo de apresentação](https://www.loom.com/share/7f58199e302c4d14a7a7797a7ff50ae6?sid=7184b112-1907-47da-9286-356601c55e6c)
+
 ## Contatos
 
 <a href="mailto:felipe.lima0160@gmail.com">![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)</a>  <a href="https://wa.me/5521979926096">![Whatsapp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)</a>  <a href="https://www.linkedin.com/in/felipepliima/">![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)</a> 
